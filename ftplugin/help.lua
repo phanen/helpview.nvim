@@ -4,7 +4,7 @@ local cursor_pos = {};
 local ts_available, treesitter_parsers = pcall(require, "nvim-treesitter.parsers");
 
 local parser_installed = function (parser_name)
-	return (ts_available and treesitter_parsers.has_parser(parser_name)) or vim.treesitter.query.get(parser_name, "highlights");
+	return (ts_available and treesitter_parsers.has_parser and treesitter_parsers.has_parser(parser_name)) or vim.treesitter.query.get(parser_name, "highlights");
 end
 
 if vim.fn.has("nvim-0.10") == 0 then
